@@ -1,41 +1,43 @@
-
 using System;
 using System.Data.SqlClient;
 
-namespace CRMSimpleApp
+// CRMApp to fetch customer details from a database
+namespace CRMApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Connection String (Replace with your own connection string)
+            // Define the connection string (I would replace the placeholders with actual values IRL)
             string connectionString = "Data Source=Your_Server;Initial Catalog=Your_Database;User ID=Your_User;Password=Your_Password";
 
-            // Create SQL Connection
+            // Create and manage SQL Connection
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Open the Connection
+                // Open the connection
                 connection.Open();
 
-                // SQL Query to Fetch Data from Customers Table
+                // SQL Query to fetch customer details
                 string sqlQuery = "SELECT * FROM Customers";
 
+                // Create and execute SQL Command
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
-                    // Execute SQL Command and Read Data
+                    // Execute the query and read the data
                     SqlDataReader reader = command.ExecuteReader();
 
+                    // Display customer details
                     Console.WriteLine("Customer Details:");
                     while (reader.Read())
                     {
                         Console.WriteLine($"ID: {reader["CustomerID"]}, Name: {reader["FirstName"]} {reader["LastName"]}, Email: {reader["Email"]}");
                     }
 
-                    // Close Reader
+                    // Close the reader
                     reader.Close();
                 }
 
-                // Close the Connection
+                // Close the connection
                 connection.Close();
             }
         }

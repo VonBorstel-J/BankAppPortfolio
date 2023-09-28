@@ -1,38 +1,37 @@
-
 using System;
 
+// Program to calculate loan payments
 namespace LoanCalculator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Prompt for Principal Amount
+            // Prompt user for principal amount
             Console.Write("Enter the principal amount: ");
             double principal = Convert.ToDouble(Console.ReadLine());
 
-            // Prompt for Annual Interest Rate
+            // Prompt user for annual interest rate
             Console.Write("Enter the annual interest rate (in percentage): ");
             double annualInterestRate = Convert.ToDouble(Console.ReadLine());
 
-            // Prompt for Loan Duration in Years
+            // Prompt user for loan duration in years
             Console.Write("Enter the loan duration (in years): ");
             int years = Convert.ToInt32(Console.ReadLine());
 
-            // Monthly Interest Rate
+            // Calculate monthly interest rate
             double monthlyInterestRate = (annualInterestRate / 100) / 12;
 
-            // Number of Monthly Payments
+            // Calculate number of monthly payments
             int numberOfPayments = years * 12;
 
-            // Calculate Monthly Payment using the formula
-            // M = P [ r(1+r)^n ] / [ (1+r)^n - 1 ]
+            // Calculate monthly payment using formula
             double monthlyPayment = principal * (monthlyInterestRate * Math.Pow(1 + monthlyInterestRate, numberOfPayments)) / (Math.Pow(1 + monthlyInterestRate, numberOfPayments) - 1);
 
-            // Calculate Total Payment
+            // Calculate total payment over loan term
             double totalPayment = monthlyPayment * numberOfPayments;
 
-            // Output the Results
+            // Display the calculated monthly and total payments
             Console.WriteLine($"Monthly Payment: {monthlyPayment:F2}");
             Console.WriteLine($"Total Payment: {totalPayment:F2}");
         }

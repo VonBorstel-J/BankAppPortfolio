@@ -1,25 +1,30 @@
-
 using System;
 
-namespace BasicBankingApp
+// Main Program for Basic Banking Application
+namespace BankApp
 {
     class Program
     {
         static void Main(string[] args)
         {
+            // Create initial bank accounts
             BankAccount account1 = new BankAccount("Jordan", 1000);
             BankAccount account2 = new BankAccount("Friend", 500);
 
+            // Main loop to handle user choices
             while (true)
             {
+                // Display menu options
                 Console.WriteLine("1. Check Balance");
                 Console.WriteLine("2. Deposit");
                 Console.WriteLine("3. Withdraw");
                 Console.WriteLine("4. Transfer");
                 Console.WriteLine("5. Exit");
 
+                // Get user choice
                 string choice = Console.ReadLine();
 
+                // Perform action based on user choice
                 switch (choice)
                 {
                     case "1":
